@@ -10,7 +10,6 @@
 		F97A5E3D1EB59F7200CB0212 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F97A5E301EB5990A00CB0212 /* GLUT.framework */; };
 		F97A5E3E1EB59F7900CB0212 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F97A5E2E1EB598FB00CB0212 /* OpenGL.framework */; };
 		F97A5E3F1EB59FA100CB0212 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F97A5E291EB596B800CB0212 /* game.cpp */; };
-		F97A5E401EB59FA100CB0212 /* game.h in Sources */ = {isa = PBXBuildFile; fileRef = F97A5E2A1EB596B800CB0212 /* game.h */; };
 		F97A5E431EB5A00100CB0212 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F97A5E421EB5A00100CB0212 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +109,9 @@
 		F97A5E171EB5966900CB0212 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "mayank metha";
 				TargetAttributes = {
@@ -143,7 +145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F97A5E3F1EB59FA100CB0212 /* game.cpp in Sources */,
-				F97A5E401EB59FA100CB0212 /* game.h in Sources */,
 				F97A5E431EB5A00100CB0212 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,18 +244,22 @@
 		F97A5E3B1EB59F6400CB0212 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEVELOPMENT_TEAM = C6M4ZBYTS9;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		F97A5E3C1EB59F6400CB0212 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEVELOPMENT_TEAM = C6M4ZBYTS9;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
