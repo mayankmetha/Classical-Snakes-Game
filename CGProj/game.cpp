@@ -5,7 +5,7 @@
 int gridX, gridY; //grid lines
 short sDir; //snake motion animation
 int snake_length;//snake length
-int posX[60], posY[60]; //snakeInitialPosition
+int posX[60], posY[60]; //snake initial position
 extern bool gameOver; //gameOver flag
 extern bool gamePause; //gamePause flag
 bool food; //place food or not
