@@ -184,14 +184,14 @@ void renderGame() {
 
 //render welcome screen
 void renderWelcome() {
-	drawStrings("CLASSICAL SNAKES", 0.03, 0.03, 30, 1200,1.5);
-	drawStrings("GRAPHICS PROJECT", 0.02, 0.02, 40, 1600,1.5);
-	drawStrings("PRESS S TO START GAME", 0.01, 0.01, 100, 2600,1.2);
-	drawStrings("PRESS P TO PAUSE GAME", 0.01, 0.01, 100, 2400,1.2);
-	drawStrings("PRESS Q TO QUIT GAME", 0.01, 0.01, 100, 2200,1.2);
-	drawStrings("USE ARROW KEYS AS GAME CONTROLS", 0.01, 0.01, 100, 2000,1.2);
-	drawStrings("AUTHOR : MAYANK METHA D", 0.015, 0.015, 60, 800,1.5);
-	drawStrings("USN : 1MV14CS054", 0.015, 0.015, 60, 600,1.5);
+	drawStrings((char*)"CLASSICAL SNAKES", 0.03, 0.03, 30, 1200,1.5);
+	drawStrings((char*)"GRAPHICS PROJECT", 0.02, 0.02, 40, 1600,1.5);
+	drawStrings((char*)"PRESS S TO START GAME", 0.01, 0.01, 100, 2600,1.2);
+	drawStrings((char*)"PRESS P TO PAUSE GAME", 0.01, 0.01, 100, 2400,1.2);
+	drawStrings((char*)"PRESS Q TO QUIT GAME", 0.01, 0.01, 100, 2200,1.2);
+	drawStrings((char*)"USE ARROW KEYS AS GAME CONTROLS", 0.01, 0.01, 100, 2000,1.2);
+	drawStrings((char*)"AUTHOR : MAYANK METHA D", 0.015, 0.015, 60, 800,1.5);
+	drawStrings((char*)"USN : 1MV14CS054", 0.015, 0.015, 60, 600,1.5);
 }
 
 //render pause screen
@@ -199,7 +199,7 @@ void renderPause() {
 	drawGrid();
 	drawFood();
 	drawSnake();
-	drawStrings("GAME PAUSED", 0.03, 0.03, 190, 1100,1.5);
+	drawStrings((char*)"GAME PAUSED", 0.03, 0.03, 190, 1100,1.5);
 	getScoreString();
 }
 
@@ -208,8 +208,8 @@ void renderExit() {
 	drawGrid();
 	drawFood();
 	drawSnake();
-	drawStrings("GAME OVER", 0.03, 0.03, 220, 1100,1.5);
-	drawStrings("PRESS Q TO QUIT", 0.015, 0.015, 300, 1600,1.5);
-	drawStrings("PRESS N TO RESTART", 0.015, 0.015, 300, 1400,1.5);
+	drawStrings((char*)"GAME OVER", 0.03, 0.03, 220, 1100,1.5);
+	drawStrings((char*)"PRESS Q TO QUIT", 0.015, 0.015, 300, 1600,1.5);
+	drawStrings((char*)"PRESS N TO RESTART", 0.015, 0.015, 300, 1400,1.5);
 	getScoreString();
 }
