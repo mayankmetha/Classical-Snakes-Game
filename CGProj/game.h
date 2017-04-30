@@ -11,7 +11,7 @@
 #endif
 #include<stdio.h>
 #include<stdlib.h>
-#include<strings.h>
+#include<cstring>
 
 #define UP 1
 #define RIGHT 2
