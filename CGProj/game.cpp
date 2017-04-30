@@ -168,7 +168,6 @@ void drawStrings(char *str, float sx, float sy, float tx, float ty,float thickne
 //print score string
 void getScoreString() {
 	char sChar[10];
-	//itoa(score, sChar, 10);
     sprintf(sChar, "%d", score);
 	strcpy(text, "SCORE : ");
 	strcat(text, sChar);
