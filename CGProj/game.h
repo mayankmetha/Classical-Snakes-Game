@@ -3,12 +3,7 @@
 #define _GAME_H
 
 //include headers 
-#ifdef __APPLE__
-#include <OpenGL/OpenGL.h>
-#include <GLUT/glut.h>
-#else
-#include<GL/glut.h>
-#endif
+#include"platforms.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<cstring>
