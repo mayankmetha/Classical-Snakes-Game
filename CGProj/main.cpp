@@ -64,7 +64,7 @@ void myDisplay() {
     glutSwapBuffers();
 }
 
-//scaling & transform function
+//scaling & transform screen function
 void myReshape(int w, int h) {
     glViewport(0, 0, (GLsizei)w, (GLsizei)h);
     glMatrixMode(GL_PROJECTION);

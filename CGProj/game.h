@@ -14,6 +14,13 @@
 #define LEFT 4
 #define MAX_LEN 60;
 
+//colors
+typedef float colors[3];
+const colors WHITE = { 1.0,1.0,1.0 };
+const colors RED = { 1.0,0.0,0.0 };
+const colors GREEN = { 0.0,1.0,0.0 };
+const colors BLUE = { 0.0,0.0,1.0 };
+
 //sharable functions
 void initGame();
 void initGrid(int, int);

@@ -37,7 +37,7 @@ void initGrid(int rows, int columns) {
 void gridUnit(int x, int y) {
 	//red border
 	if ((x == 0 || x == gridX - 1 || y == 0 || y == gridY - 1)) {
-		glColor3f(1.0, 0.0, 0.0);
+		glColor3fv(RED);
 		glLineWidth(3.0);
 		glBegin(GL_LINE_LOOP);
 		glVertex2d(x, y);
@@ -73,7 +73,7 @@ void drawFood() {
 	}
 	food = false;
 	//food color
-	glColor3f(0.0, 0.0, 1.0);
+	glColor3fv(BLUE);
 	//draw food rectangle
 	glRectd(foodX, foodY, foodX + 1, foodY + 1);
 }
@@ -116,21 +116,21 @@ void drawSnake() {
 
 	//draw body segments
 	for (int i = 0; i < snake_length; i++) {
-		glColor3f(0.0, 1.0, 0.0);
+		glColor3fv(GREEN);
 		glRectd(posX[i], posY[i], posX[i] + 1, posY[i] + 1);
 	}
 
 	if (!gamePause) {
 		//collision detection with border
 		if (posX[0] == 0 || posX[0] == gridX - 1 || posY[0] == 0 || posY[0] == gridY - 1) {
-			glColor3f(1.0, 0.0, 0.0);
+			glColor3fv(RED);
 			glRectd(posX[0], posY[0], posX[0] + 1, posY[0] + 1);
 			makeGameOver();
 		}
 		//collison with own body
 		for (int i = 1; i < snake_length; i++) {
 			if (posY[0] == posY[i] && posX[0] == posX[i]) {
-				glColor3f(1.0, 0.0, 0.0);
+				glColor3fv(RED);
 				glRectd(posX[i], posY[i], posX[i] + 1, posY[i] + 1);
 				makeGameOver();
 			}
@@ -154,7 +154,7 @@ void makeGameOver() {
 
 //stroke text generator
 void drawStrings(char *str, float sx, float sy, float tx, float ty,float thickness) {
-	glColor3f(1.0, 1.0, 1.0);
+	glColor3fv(WHITE);
 	glPushMatrix();
 	glScalef(sx, sy,0);
 	glTranslatef(tx, ty, 0);
