@@ -8,6 +8,6 @@ MacOS/OSX:
 	Clone project, compile and run with XCode
 Linux(Ubuntu/Debian):
 	Clone project
-	run "sh ubuntuDependicies.sh for first time" to install freeglut3
+	run "sh ubuntuDependicies.sh" to install freeglut3
 	run "make" to compile project
 	run "./snakes.exe" to execute project 
