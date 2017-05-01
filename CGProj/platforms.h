@@ -3,7 +3,7 @@
 
 
 #ifdef __APPLE__
-//APPLE
+//APPLE macOS 10.7 upwards
 #include <OpenGL/OpenGL.h>
 #include <GLUT/glut.h>
 #elif defined _WIN32
