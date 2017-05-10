@@ -35,6 +35,7 @@ const colors BLUE = { 0.0,0.0,1.0 };
 //sharable functions
 void initGame();
 void initGrid(int, int);
+void drawWall();
 void drawGrid();
 void drawSnake();
 void drawFood();

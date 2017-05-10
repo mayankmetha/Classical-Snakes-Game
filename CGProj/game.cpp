@@ -36,8 +36,9 @@ void initGrid(int rows, int columns) {
 	gridY = rows;
 }
 
-//draw grid cell
-void drawCell(int x, int y, float thickness) {
+//draw cell outline
+void drawCell(int x, int y, float thickness,const float* color) {
+	glColor3fv(color);
 	glLineWidth(thickness);
 	glBegin(GL_LINE_LOOP);
 	glVertex2d(x, y);
@@ -46,25 +47,23 @@ void drawCell(int x, int y, float thickness) {
 	glVertex2d(x, y + 1);
 	glEnd();
 }
-//draw grid
-void gridUnit(int x, int y) {
-	if (hiddenFlag && !gamePause && !gameOver) {
-		glColor3fv(GREY);
-		drawCell(x, y, 1.0);
-	}
-	//red border
-	if ((x == 0 || x == gridX - 1 || y == 0 || y == gridY - 1)) {
-		glColor3fv(RED);
-		drawCell(x, y, 3.0);
-	}
 
-}
-
-// draw cells to form grid
+//draw grid when easter egg flag is active
 void drawGrid() {
 	for (int x = 0; x < gridX; x++) {
 		for (int y = 0; y < gridY; y++) {
-			gridUnit(x, y); 
+			if (!gamePause && !gameOver && !(x == 0 || x == gridX - 1 || y == 0 || y == gridY - 1))
+				drawCell(x, y, 1.0, GREY);
+		}
+	}
+}
+
+//draw wall
+void drawWall() {
+	for (int x = 0; x < gridX; x++) {
+		for (int y = 0; y < gridY; y++) {
+			if (x == 0 || x == gridX - 1 || y == 0 || y == gridY - 1)
+				drawCell(x, y, 3.0, RED);
 		}
 	}
 }
@@ -189,7 +188,9 @@ void getScoreString() {
 
 //render game screen
 void renderGame() {
-	drawGrid();
+	if(hiddenFlag)
+		drawGrid();
+	drawWall();
 	drawFood();
 	drawSnake();
 }
@@ -208,7 +209,7 @@ void renderWelcome() {
 
 //render pause screen
 void renderPause() {
-	drawGrid();
+	drawWall();
 	drawFood();
 	drawSnake();
 	drawStrings((char*)"GAME PAUSED", 0.03, 0.03, 190, 1100,1.5);
@@ -218,7 +219,7 @@ void renderPause() {
 
 //render exit screen
 void renderExit() {
-	drawGrid();
+	drawWall();
 	drawFood();
 	drawSnake();
 	drawStrings((char*)"GAME OVER", 0.03, 0.03, 220, 1100,1.5);
