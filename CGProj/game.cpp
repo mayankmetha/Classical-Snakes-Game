@@ -17,7 +17,7 @@ extern int fps; //animations frame rate
 
 //init game
 void initGame() {
-	fps = 5;
+	fps = MIN_FPS;
 	score = 0;
 	sDir = RIGHT;
 	sDirFlag = true;

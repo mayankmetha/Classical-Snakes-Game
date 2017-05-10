@@ -8,20 +8,14 @@
 // |
 //  ------->x
 
-//constants
-#define ROWS 40 //yaxis
-#define COLUMNS 40 //xaxis
-#define FPS 12 //frame per seconds
-#define MIN_FPS 5 //minimum FPS
-
 //variables
-extern short sDir;
-bool gameOver = false;
-bool gamePause = false;
-bool gameWelcome = false;
-int score;
-int fps;
-bool sDirFlag = true;
+extern short sDir; // snake direction
+bool gameOver = false; //game over flag
+bool gamePause = false; //game pause flag
+bool gameWelcome = false; //game before start flag
+int score; // score of game
+int fps; // frame rate of game
+bool sDirFlag = true; // snake direction change input flag
 
 // initalze the program
 void myInit() {

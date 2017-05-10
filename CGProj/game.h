@@ -8,10 +8,19 @@
 #include<stdlib.h>
 #include<cstring>
 
+//constants
+#define ROWS 40 //yaxis
+#define COLUMNS 40 //xaxis
+#define FPS 15 //frame per seconds
+#define MIN_FPS 5 //minimum FPS
+
+//directions numbers
 #define UP 1
 #define RIGHT 2
 #define DOWN 3
 #define LEFT 4
+
+//max length of snake
 #define MAX_LEN 60;
 
 //colors
