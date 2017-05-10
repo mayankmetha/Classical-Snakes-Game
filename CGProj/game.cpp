@@ -3,7 +3,7 @@
 
 //variables
 int gridX, gridY; //grid lines
-short sDir; //snake motion animation
+extern short sDir; //snake motion animation
 extern bool sDirFlag; //snake direction keyboard flag
 int snake_length;//snake length
 int posX[60], posY[60]; //snake initial position

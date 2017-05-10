@@ -9,7 +9,7 @@
 //  ------->x
 
 //variables
-extern short sDir; // snake direction
+short sDir; // snake direction
 bool gameOver = false; //game over flag
 bool gamePause = false; //game pause flag
 bool gameWelcome = false; //game before start flag
