@@ -16,6 +16,8 @@ bool gameWelcome = false; //game before start flag
 int score; // score of game
 int fps; // frame rate of game
 bool sDirFlag = true; // snake direction change input flag
+bool hiddenFlag = false; //easter egg
+int easterEgg; // easterFlag enables only when H key is hit 5 times
 
 // initalze the program
 void myInit() {
@@ -23,6 +25,7 @@ void myInit() {
     initGrid(ROWS,COLUMNS);
     initGame();
     gameWelcome = true;
+	easterEgg = 5;
 }
 
 //timer function for animation fps
@@ -143,6 +146,17 @@ void myKeyboard(unsigned char key, int, int) {
 		case 'D':
 			if (!gameOver && !gamePause && !gameWelcome)
 				turnRight();
+			break;
+		//easterEgg flag enable if count 0 or easterEgg--;
+		case 'h':
+		case 'H':
+			if (easterEgg > 1)
+				easterEgg--;
+			else if (easterEgg == 1) {
+				easterEgg--;
+				hiddenFlag = true;
+			}
+			else hiddenFlag = !hiddenFlag;
 			break;
     }
 }

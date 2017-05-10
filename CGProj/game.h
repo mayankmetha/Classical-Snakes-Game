@@ -26,6 +26,7 @@
 
 //colors
 typedef float colors[3];
+const colors GREY = { 0.5,0.5,0.5 };
 const colors WHITE = { 1.0,1.0,1.0 };
 const colors RED = { 1.0,0.0,0.0 };
 const colors GREEN = { 0.0,1.0,0.0 };

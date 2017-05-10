@@ -14,6 +14,7 @@ int foodX, foodY; // food position
 extern int score; //score
 char text[50]; //score string
 extern int fps; //animations frame rate
+extern bool hiddenFlag; //easter Egg flag
 
 //init game variables
 void initGame() {
@@ -35,19 +36,28 @@ void initGrid(int rows, int columns) {
 	gridY = rows;
 }
 
-//grid cell
+//draw grid cell
+void drawCell(int x, int y, float thickness) {
+	glLineWidth(thickness);
+	glBegin(GL_LINE_LOOP);
+	glVertex2d(x, y);
+	glVertex2d(x + 1, y);
+	glVertex2d(x + 1, y + 1);
+	glVertex2d(x, y + 1);
+	glEnd();
+}
+//draw grid
 void gridUnit(int x, int y) {
+	if (hiddenFlag && !gamePause && !gameOver) {
+		glColor3fv(GREY);
+		drawCell(x, y, 1.0);
+	}
 	//red border
 	if ((x == 0 || x == gridX - 1 || y == 0 || y == gridY - 1)) {
 		glColor3fv(RED);
-		glLineWidth(3.0);
-		glBegin(GL_LINE_LOOP);
-		glVertex2d(x, y);
-		glVertex2d(x + 1, y);
-		glVertex2d(x + 1, y + 1);
-		glVertex2d(x, y + 1);
-		glEnd();
+		drawCell(x, y, 3.0);
 	}
+
 }
 
 // draw cells to form grid
