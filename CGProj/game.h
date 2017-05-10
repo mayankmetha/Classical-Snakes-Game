@@ -7,6 +7,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<cstring>
+#include<cmath>
 
 //constants
 #define ROWS 40 //yaxis

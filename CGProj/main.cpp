@@ -29,8 +29,8 @@ void myInit() {
 void myTimer(int) {
     glutPostRedisplay();
     //increase fps by one unit after score increaases by 5
-    if (score/5!=0 && score!=0) {
-        fps = MIN_FPS + (score / 5);
+    if (score%5==0 && score!=0) {
+        fps = MIN_FPS + floor(score / 5);
         if (fps > FPS) fps = FPS;
     }
     glutTimerFunc(1000 / fps, myTimer, 0);

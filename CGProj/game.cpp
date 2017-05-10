@@ -15,7 +15,7 @@ extern int score; //score
 char text[50]; //score string
 extern int fps; //animations frame rate
 
-//init game
+//init game variables
 void initGame() {
 	fps = MIN_FPS;
 	score = 0;
