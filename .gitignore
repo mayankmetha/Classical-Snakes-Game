@@ -1,5 +1,7 @@
 ﻿/.vs/*
+/x64/*
 /Debug/*
 /Release/*
 /CGProj/Debug/*
 /CGProj/Release/*
+/CGProj/x64/*

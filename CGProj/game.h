@@ -43,4 +43,9 @@ void renderWelcome();
 void renderGame();
 void renderPause();
 void renderExit();
+void turnUp();
+void turnDown();
+void turnRight();
+void turnLeft();
+
 #endif

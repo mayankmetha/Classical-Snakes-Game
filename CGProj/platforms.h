@@ -7,7 +7,7 @@
 #include <OpenGL/OpenGL.h>
 #include <GLUT/glut.h>
 #elif defined _WIN32
-//WIN 32bit and 64bit
+//WINDOWS 32bit only
 #include<GL/glut.h>
 #elif defined __linux__
 //freeGlut on linux

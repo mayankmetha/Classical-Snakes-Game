@@ -73,28 +73,20 @@ void myReshape(int w, int h) {
 void mySpecialKeyboard(int key, int, int) {
     switch (key) {
         case GLUT_KEY_UP:
-			if (sDir != DOWN && sDirFlag == true) {
-				sDir = UP;
-				sDirFlag = false;
-			}
+			if (!gameOver && !gamePause && !gameWelcome)
+				turnUp();
             break;
         case GLUT_KEY_DOWN:
-			if (sDir != UP && sDirFlag == true) {
-				sDir = DOWN;
-				sDirFlag = false;
-			}
+			if (!gameOver && !gamePause && !gameWelcome)
+				turnDown();
             break;
         case GLUT_KEY_RIGHT:
-			if (sDir != LEFT && sDirFlag == true) {
-				sDir = RIGHT;
-				sDirFlag = false;
-			}
+			if (!gameOver && !gamePause && !gameWelcome)
+				turnRight();
             break;
         case GLUT_KEY_LEFT:
-			if (sDir != RIGHT && sDirFlag == true) {
-				sDir = LEFT;
-				sDirFlag = false;
-			}
+			if (!gameOver && !gamePause && !gameWelcome)
+				turnLeft();
             break;
     }
 }
@@ -102,12 +94,7 @@ void mySpecialKeyboard(int key, int, int) {
 //keyboard alphanumeric
 void myKeyboard(unsigned char key, int, int) {
     switch (key) {
-            //start
-        case 's':
-        case 'S':
-            gameWelcome = false;
-            break;
-            //restart after game over
+        //restart after game over
         case 'n':
         case 'N':
             if (gameOver) {
@@ -117,13 +104,13 @@ void myKeyboard(unsigned char key, int, int) {
                 gameWelcome = true;
             }
             break;
-            //pause
+        //pause
         case 'p':
         case 'P':
             if(!gameOver && !gameWelcome)
                 gamePause = !gamePause;
             break;
-            //exit
+        //exit
         case 'q':
         case 'Q':
             if (!gameOver && !gameWelcome)
@@ -131,6 +118,32 @@ void myKeyboard(unsigned char key, int, int) {
             else 
                 exit(0);
             break;
+		//turn up
+		case 'w':
+		case 'W':
+			if (!gameOver && !gamePause && !gameWelcome)
+				turnUp();
+			break;
+		//start and turn down
+		case 's':
+		case 'S':
+			if(gameWelcome)
+				gameWelcome = false;
+			else if (!gameOver && !gamePause && !gameWelcome)
+				turnDown();
+			break;
+		//turn left
+		case 'a':
+		case 'A':
+			if (!gameOver && !gamePause && !gameWelcome)
+				turnLeft();
+			break;
+		//turn right
+		case 'd':
+		case 'D':
+			if (!gameOver && !gamePause && !gameWelcome)
+				turnRight();
+			break;
     }
 }
 

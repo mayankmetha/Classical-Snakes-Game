@@ -191,7 +191,7 @@ void renderWelcome() {
 	drawStrings((char*)"PRESS S TO START GAME", 0.01, 0.01, 100, 2600,1.2);
 	drawStrings((char*)"PRESS P TO PAUSE GAME", 0.01, 0.01, 100, 2400,1.2);
 	drawStrings((char*)"PRESS Q TO QUIT GAME", 0.01, 0.01, 100, 2200,1.2);
-	drawStrings((char*)"USE ARROW KEYS AS GAME CONTROLS", 0.01, 0.01, 100, 2000,1.2);
+	drawStrings((char*)"USE ARROW KEYS OR W,S,A,D AS GAME CONTROLS", 0.01, 0.01, 100, 2000,1.2);
 	drawStrings((char*)"AUTHOR : MAYANK METHA D", 0.015, 0.015, 60, 800,1.5);
 	drawStrings((char*)"USN : 1MV14CS054", 0.015, 0.015, 60, 600,1.5);
 }
@@ -202,6 +202,7 @@ void renderPause() {
 	drawFood();
 	drawSnake();
 	drawStrings((char*)"GAME PAUSED", 0.03, 0.03, 190, 1100,1.5);
+	drawStrings((char*)"PRESS P TO UNPAUSE", 0.015, 0.015, 300, 1600, 1.5);
 	getScoreString();
 }
 
@@ -214,4 +215,36 @@ void renderExit() {
 	drawStrings((char*)"PRESS Q TO QUIT", 0.015, 0.015, 300, 1600,1.5);
 	drawStrings((char*)"PRESS N TO RESTART", 0.015, 0.015, 300, 1400,1.5);
 	getScoreString();
+}
+
+//turn up
+void turnUp() {
+	if (sDir != DOWN && sDirFlag == true) {
+		sDir = UP;
+		sDirFlag = false;
+	}
+}
+
+//turn down
+void turnDown() {
+	if (sDir != UP && sDirFlag == true) {
+		sDir = DOWN;
+		sDirFlag = false;
+	}
+}
+
+//turn right
+void turnRight() {
+	if (sDir != LEFT && sDirFlag == true) {
+		sDir = RIGHT;
+		sDirFlag = false;
+	}
+}
+
+//turn left
+void turnLeft() {
+	if (sDir != RIGHT && sDirFlag == true) {
+		sDir = LEFT;
+		sDirFlag = false;
+	}
 }
