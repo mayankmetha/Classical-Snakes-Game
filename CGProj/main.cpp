@@ -21,6 +21,7 @@ bool gamePause = false;
 bool gameWelcome = false;
 int score;
 int fps;
+bool sDirFlag = true;
 
 // initalze the program
 void myInit() {
@@ -69,7 +70,7 @@ void myReshape(int w, int h) {
     glViewport(0, 0, (GLsizei)w, (GLsizei)h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(0.0, COLUMNS, 0.0, ROWS, -1.0, 1.0);
+	glOrtho(0.0, COLUMNS, 0.0, ROWS, -1.0, 1.0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
@@ -78,20 +79,28 @@ void myReshape(int w, int h) {
 void mySpecialKeyboard(int key, int, int) {
     switch (key) {
         case GLUT_KEY_UP:
-            if (sDir != DOWN)
-                sDir = UP;
+			if (sDir != DOWN && sDirFlag == true) {
+				sDir = UP;
+				sDirFlag = false;
+			}
             break;
         case GLUT_KEY_DOWN:
-            if (sDir != UP)
-                sDir = DOWN;
+			if (sDir != UP && sDirFlag == true) {
+				sDir = DOWN;
+				sDirFlag = false;
+			}
             break;
         case GLUT_KEY_RIGHT:
-            if (sDir != LEFT)
-                sDir = RIGHT;
+			if (sDir != LEFT && sDirFlag == true) {
+				sDir = RIGHT;
+				sDirFlag = false;
+			}
             break;
         case GLUT_KEY_LEFT:
-            if (sDir != RIGHT)
-                sDir = LEFT;
+			if (sDir != RIGHT && sDirFlag == true) {
+				sDir = LEFT;
+				sDirFlag = false;
+			}
             break;
     }
 }

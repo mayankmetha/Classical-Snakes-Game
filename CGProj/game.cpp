@@ -4,6 +4,7 @@
 //variables
 int gridX, gridY; //grid lines
 short sDir; //snake motion animation
+extern bool sDirFlag; //snake direction keyboard flag
 int snake_length;//snake length
 int posX[60], posY[60]; //snake initial position
 extern bool gameOver; //gameOver flag
@@ -12,13 +13,14 @@ bool food; //place food or not
 int foodX, foodY; // food position
 extern int score; //score
 char text[50]; //score string
-extern int fps;
+extern int fps; //animations frame rate
 
 //init game
 void initGame() {
 	fps = 5;
 	score = 0;
 	sDir = RIGHT;
+	sDirFlag = true;
 	snake_length = 5;
 	for (int i = 0; i < snake_length; i++) {
 		posX[i] = 20;
@@ -97,19 +99,23 @@ void drawSnake() {
 			posX[i] = posX[i - 1];
 			posY[i] = posY[i - 1];
 		}
-		//snake direction change on key input
+		//snake direction change on key input and enable keyboard
 		switch (sDir) {
 		case UP:
 			posY[0]++;
+			sDirFlag = true;
 			break;
 		case DOWN:
 			posY[0]--;
+			sDirFlag = true;
 			break;
 		case RIGHT:
 			posX[0]++;
+			sDirFlag = true;
 			break;
 		case LEFT:
 			posX[0]--;
+			sDirFlag = true;
 			break;
 		}
 	}
