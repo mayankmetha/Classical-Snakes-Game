@@ -49,5 +49,6 @@ void turnUp();
 void turnDown();
 void turnRight();
 void turnLeft();
+void autoPlay();
 
 #endif

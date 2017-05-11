@@ -87,6 +87,9 @@ void drawFood() {
 	glColor3fv(BLUE);
 	//draw food rectangle
 	glRectd(foodX, foodY, foodX + 1, foodY + 1);
+	//easter egg
+	if (hiddenFlag)
+		autoPlay();
 }
 
 //2 random number generator
@@ -157,6 +160,52 @@ void drawSnake() {
 				snake_length = MAX_LEN;
 			food = true;
 			score++;
+		}
+	}
+}
+
+//semi automatic snake direction change easter egg without self collision avoidance 
+void autoPlay() {
+	int xdiff = foodX - posX[0]; //distance between snake and food on xaxis
+	int ydiff = foodY - posY[0]; //distance between snake and food on yaxis
+	if (xdiff > 0) {
+		if (sDir != LEFT)
+			turnRight();
+		else {
+			if (posY[0] != 1)
+				turnUp();
+			else if (posY[0] != (gridY - 1))
+				turnDown();
+		}
+	}
+	else if (xdiff < 0) {
+		if(sDir != RIGHT)
+			turnLeft();
+		else {
+			if (posY[0] != 1)
+				turnUp();
+			else if (posY[0] != (gridY - 1))
+				turnDown();
+		}
+	}
+	if (ydiff > 0) {
+		if(sDir != DOWN)
+			turnUp();
+		else {
+			if (posX[0] != 1)
+				turnRight();
+			else if (posX[0] != (gridX - 1))
+				turnLeft();
+		}
+	}
+	else if (ydiff < 0) {
+		if(sDir != UP)
+			turnDown();
+		else {
+			if (posX[0] != 1)
+				turnRight();
+			else if (posX[0] != (gridX - 1))
+				turnLeft();
 		}
 	}
 }
