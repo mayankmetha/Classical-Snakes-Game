@@ -160,7 +160,7 @@ void drawSnake() {
 				snake_length = MAX_LEN;
 			food = true;
 			score++;
-			printf("food\n");
+			printf("food,score=%d\n",score);
 		}
 	}
 }
