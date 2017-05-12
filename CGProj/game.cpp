@@ -290,9 +290,12 @@ void autoPlay() {
             }
             break;
         case 7: //collision not possible on sDir = left
-            if(sDir == RIGHT || sDir == UP || sDir == DOWN) {
+            if(sDir == UP || sDir == DOWN) {
                 if(posY[0] != 1)
                     turnLeft();
+            }
+            else if(sDir == RIGHT) {
+                printf("Trapped\n");
             }
             break;
         case 8: //collision on sDir = left
@@ -324,9 +327,12 @@ void autoPlay() {
             }
             break;
         case 11: //collision not possible on sDir = right
-            if(sDir == LEFT || sDir == UP || sDir == DOWN) {
+            if(sDir == UP || sDir == DOWN) {
                 if(posY[0] != (gridY - 2))
                     turnRight();
+            }
+            else if(sDir == LEFT) {
+                printf("Trapped\n");
             }
             break;
         case 12: //collision on x-axis
@@ -338,18 +344,25 @@ void autoPlay() {
             }
             break;
         case 13: //collision not possible on sDir = down
-            if(sDir == RIGHT || sDir == LEFT || sDir == UP) {
+            if(sDir == RIGHT || sDir == LEFT) {
                 if(posX[0] != 1)
                     turnDown();
             }
+            else if(sDir == UP) {
+                printf("Trapped\n");
+            }
             break;
         case 14: //collision not possible on sDir = up
-            if(sDir == RIGHT || sDir == LEFT || sDir == DOWN) {
+            if(sDir == RIGHT || sDir == LEFT) {
                 if(posX[0] != (gridX - 2))
                     turnUp();
             }
+            else if(sDir == DOWN) {
+                printf("Trapped\n");
+            }
             break;
         case 15: //collision avoidance not possible - ignore
+            printf("Cornered\n");
             break;
     }
 }
