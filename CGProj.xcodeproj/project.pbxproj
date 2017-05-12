@@ -26,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F960B3E21EC571530046CEDE /* platforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platforms.h; sourceTree = "<group>"; };
 		F97A5E291EB596B800CB0212 /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
 		F97A5E2A1EB596B800CB0212 /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
 		F97A5E2E1EB598FB00CB0212 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -67,6 +68,7 @@
 		F97A5E211EB5966900CB0212 /* CGProj */ = {
 			isa = PBXGroup;
 			children = (
+				F960B3E21EC571530046CEDE /* platforms.h */,
 				F97A5E291EB596B800CB0212 /* game.cpp */,
 				F97A5E2A1EB596B800CB0212 /* game.h */,
 				F97A5E421EB5A00100CB0212 /* main.cpp */,
@@ -282,6 +284,7 @@
 				F97A5E3C1EB59F6400CB0212 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
