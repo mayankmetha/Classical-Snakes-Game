@@ -160,6 +160,7 @@ void drawSnake() {
 				snake_length = MAX_LEN;
 			food = true;
 			score++;
+			printf("food\n");
 		}
 	}
 }
@@ -168,56 +169,60 @@ void drawSnake() {
 void moveSnakeOnNoSelfCollision() {
     int xdiff = foodX - posX[0]; //distance between snake and food on xaxis
     int ydiff = foodY - posY[0]; //distance between snake and food on yaxis
-    if (xdiff > 0) {
-        if (sDir != LEFT)
-            turnRight();
-        else {
-            if (posY[0] != 1)
-                turnUp();
-            else if (posY[0] != (gridY - 1))
-                turnDown();
-        }
-    }
-    else if (xdiff < 0) {
-        if(sDir != RIGHT)
-            turnLeft();
-        else {
-            if (posY[0] != 1)
-                turnUp();
-            else if (posY[0] != (gridY - 1))
-                turnDown();
-        }
-    }
-    if (ydiff > 0) {
-        if(sDir != DOWN)
-            turnUp();
-        else {
-            if (posX[0] != 1)
-                turnRight();
-            else if (posX[0] != (gridX - 1))
-                turnLeft();
-        }
-    }
-    else if (ydiff < 0) {
-        if(sDir != UP)
-            turnDown();
-        else {
-            if (posX[0] != 1)
-                turnRight();
-            else if (posX[0] != (gridX - 1))
-                turnLeft();
-        }
-    }
+	if (max(abs(xdiff), abs(ydiff)) == (abs(xdiff))) {
+		if (xdiff > 0) {
+			if (sDir != LEFT)
+				turnRight();
+			else {
+				if (posX[0] != 1 || posY[0] != (gridY - 2))
+					turnUp();
+				else if (posX[0] != (gridX - 2) || posY[0] != 1)
+					turnDown();
+			}
+		}
+		else if (xdiff < 0) {
+			if (sDir != RIGHT)
+				turnLeft();
+			else {
+				if (posX[0] != 1 || posY[0] != (gridY - 2))
+					turnUp();
+				else if (posX[0] != (gridX - 2) || posY[0] != 1)
+					turnDown();
+			}
+		}
+	}
+	else {
+		if (ydiff > 0) {
+			if (sDir != DOWN)
+				turnUp();
+			else {
+				if (posY[0] != 1 || posX[0] != (gridX - 2))
+					turnRight();
+				else if (posY[0] != (gridY - 2) || posX[0] != 1)
+					turnLeft();
+			}
+		}
+		else if (ydiff < 0) {
+			if (sDir != UP)
+				turnDown();
+			else {
+				if (posY[0] != 1 || posX[0] != (gridX - 2))
+					turnRight();
+				else if (posY[0] != (gridY - 2) || posX[0] != 1)
+					turnLeft();
+			}
+		}
+	}
 }
 
 //Easter egg AI for snake self collision avoidance
 void autoPlay() {
+	unsigned int OldCollidable;
     unsigned int collidable = 0;
     const int up = 1;
     const int down = 2;
     const int right = 4;
     const int left = 8;
-    //TODO : fix the collidable position prediction
     for(int i = 0; i < (snake_length - 1); i++) {
         if((posX[0] + 1) == posX[i] && posY[0] == posY[i] && sDir!= LEFT)
             collidable |= right;
@@ -228,41 +233,41 @@ void autoPlay() {
         if((posY[0] - 1) == posY[i] && posX[0] == posX[i] && sDir != UP)
             collidable |= down;
     }
-    printf("sDir=%d,posX=%d,posy=%d,collidable = %d\n",sDir,posX[0],posY[0],collidable);
+	printf("Dir=%d,posX=%d,posY=%d,Collision=%d\n", sDir,posX[0],posY[0],collidable);
     switch (collidable) {
         case 0: //no collision possible
             moveSnakeOnNoSelfCollision();
             break;
         case 1: //collision on sDir = up
             if(sDir == UP) {
-                if(posX[0] == 1)
+                if(posY[0] != (gridY - 2))
                     turnRight();
-                else if(posX[0] == (gridX - 1))
+                else if(posY[0] != 1)
                     turnLeft();
             }
             break;
         case 2: //collision on sDir = down
             if(sDir == DOWN) {
-                if(posX[0] == 1)
-                    turnRight();
-                else if(posX[0] == (gridX - 1))
-                    turnLeft();
+				if(posY[0] != (gridY - 2))
+					turnRight();
+				else if(posY[0] != 1)
+					turnLeft();
             }
             break;
         case 3: //collision on y-axis
             if(sDir == UP || sDir == DOWN) {
-                if(posX[0] == 1)
-                    turnRight();
-                else if(posX[0] == (gridX - 1))
-                    turnLeft();
+				if(posY[0] != (gridY - 2))
+					turnRight();
+				else if(posY[0] != 1)
+					turnLeft();
             }
             break;
         case 4: //collision on sDir = right
             if(sDir == RIGHT) {
-                if(posY[0] == (gridY - 1))
-                    turnDown();
-                else if(posY[0] == 1)
-                    turnUp();
+				if(posX[0] != 1)
+					turnDown();
+				else if(posX[0] != (gridX - 2))
+					turnUp();
             }
             break;
         case 5: //collision on sDir = right and/or sDir = up
@@ -277,7 +282,7 @@ void autoPlay() {
             break;
         case 6: //collision on sDir = right and/or sDir = down
             if(sDir == RIGHT) {
-                if(posX[0] != (gridX - 1))
+                if(posX[0] != (gridX - 2))
                     turnUp();
             }
             else if(sDir == DOWN) {
@@ -293,10 +298,10 @@ void autoPlay() {
             break;
         case 8: //collision on sDir = left
             if(sDir == LEFT) {
-                if(posY[0] == (gridY - 1))
-                    turnDown();
-                else if(posY[0] == 1)
-                    turnUp();
+				if (posX[0] != 1)
+					turnDown();
+				else if (posX[0] != (gridX - 2))
+					turnUp();
             }
             break;
         case 9: //collision on sDir = left and/or sDir = up
@@ -305,13 +310,13 @@ void autoPlay() {
                     turnDown();
             }
             else if(sDir == UP) {
-                if(posY[0] != (gridY - 1))
+                if(posY[0] != (gridY - 2))
                     turnRight();
             }
             break;
         case 10: //collision on sDir = left and/or sDir = down
             if(sDir == LEFT){
-                if(posX[0] != (gridX - 1))
+                if(posX[0] != (gridX - 2))
                     turnUp();
             }
             else if(sDir == DOWN) {
@@ -321,16 +326,16 @@ void autoPlay() {
             break;
         case 11: //collision not possible on sDir = right
             if(sDir == LEFT || sDir == UP || sDir == DOWN) {
-                if(posY[0] != (gridY - 1))
+                if(posY[0] != (gridY - 2))
                     turnRight();
             }
             break;
         case 12: //collision on x-axis
             if(sDir == RIGHT || sDir == LEFT) {
-                if(posY[0] == (gridY - 1))
-                    turnDown();
-                else if(posY[0] == 1)
-                    turnUp();
+				if (posX[0] != 1)
+					turnDown();
+				else if (posX[0] != (gridX - 2))
+					turnUp();
             }
             break;
         case 13: //collision not possible on sDir = down
@@ -341,7 +346,7 @@ void autoPlay() {
             break;
         case 14: //collision not possible on sDir = up
             if(sDir == RIGHT || sDir == LEFT || sDir == DOWN) {
-                if(posX[0] != (gridX - 1))
+                if(posX[0] != (gridX - 2))
                     turnUp();
             }
             break;

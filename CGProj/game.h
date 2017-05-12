@@ -12,7 +12,7 @@
 //constants
 #define ROWS 40 //yaxis
 #define COLUMNS 40 //xaxis
-#define FPS 15 //frame per seconds
+#define FPS 12 //frame per seconds
 #define MIN_FPS 5 //minimum FPS
 
 //directions numbers
