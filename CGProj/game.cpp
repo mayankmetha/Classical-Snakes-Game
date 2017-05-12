@@ -169,8 +169,8 @@ void drawSnake() {
 void moveSnakeOnNoSelfCollision() {
     int xdiff = foodX - posX[0]; //distance between snake and food on xaxis
     int ydiff = foodY - posY[0]; //distance between snake and food on yaxis
-	if (max(abs(xdiff), abs(ydiff)) == (abs(xdiff))) {
-		if (xdiff > 0) {
+	if (abs(xdiff) >= abs(ydiff)) {
+		if (xdiff >= 0) {
 			if (sDir != LEFT)
 				turnRight();
 			else {
@@ -192,7 +192,7 @@ void moveSnakeOnNoSelfCollision() {
 		}
 	}
 	else {
-		if (ydiff > 0) {
+		if (ydiff >= 0) {
 			if (sDir != DOWN)
 				turnUp();
 			else {
@@ -217,7 +217,6 @@ void moveSnakeOnNoSelfCollision() {
 
 //Easter egg AI for snake self collision avoidance
 void autoPlay() {
-	unsigned int OldCollidable;
     unsigned int collidable = 0;
     const int up = 1;
     const int down = 2;
