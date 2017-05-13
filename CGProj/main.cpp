@@ -163,6 +163,7 @@ void myKeyboard(unsigned char key, int, int) {
 
 //main()
 int main(int argc, char **argv) {
+	srand(time(NULL));
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(600, 600);

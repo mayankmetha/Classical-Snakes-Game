@@ -5,4 +5,4 @@
 /CGProj/Debug/*
 /CGProj/Release/*
 /CGProj/x64/*
-/CGPRoj/logger.txt
+/CGPRoj/logger*.txt

@@ -8,6 +8,7 @@
 #include<stdlib.h>
 #include<cstring>
 #include<cmath>
+#include<time.h>
 
 //constants
 #define ROWS 40 //yaxis
