@@ -11,6 +11,7 @@ extern bool gameOver; //gameOver flag
 extern bool gamePause; //gamePause flag
 bool food; //place food or not
 int foodX, foodY; // food position
+int colorIndex; // food color
 extern int score; //score
 char text[50]; //score string
 extern int fps; //animations frame rate
@@ -72,7 +73,7 @@ void drawWall() {
 void drawFood() {
     //get new location
     if (food) {
-        random(foodX, foodY);
+        random(foodX, foodY, colorIndex);
         //is food at same loc with snake body then redraw at new location
         for (int i = 0; i < snake_length; i++) {
             for (int j = 0; j < snake_length; j++) {
@@ -84,7 +85,23 @@ void drawFood() {
     }
     food = false;
     //food color
-    glColor3fv(BLUE);
+    switch(colorIndex) {
+        case 0:
+            glColor3fv(BLUE);
+            break;
+        case 1:
+            glColor3fv(MAGENTA);
+            break;
+        case 2:
+            glColor3fv(CYAN);
+            break;
+        case 3:
+            glColor3fv(YELLOW);
+            break;
+        case 4:
+            glColor3fv(DORANGE);
+            break;
+    }
     //draw food rectangle
     glRectd(foodX, foodY, foodX + 1, foodY + 1);
     //easter egg
@@ -93,7 +110,7 @@ void drawFood() {
 }
 
 //2 random number generator
-void random(int &x, int &y) {
+void random(int &x, int &y, int &colorIndex) {
     //range
     int minX = 1;
     int maxX = gridX - 2;
@@ -101,6 +118,7 @@ void random(int &x, int &y) {
     int maxY = gridY - 2;
     x = minX + rand() % (maxX - minX);
     y = minY + rand() % (maxY - minY);
+    colorIndex = rand()%5;
 }
 
 //draw snake
@@ -134,7 +152,10 @@ void drawSnake() {
     
     //draw body segments
     for (int i = 0; i < snake_length; i++) {
-        glColor3fv(GREEN);
+        if(i % 2 == 0)
+            glColor3fv(DGREEN);
+        else
+            glColor3fv(GREEN);
         glRectd(posX[i], posY[i], posX[i] + 1, posY[i] + 1);
     }
     

@@ -16,8 +16,7 @@ bool gameWelcome = false; //game before start flag
 int score; // score of game
 int fps; // frame rate of game
 bool sDirFlag = true; // snake direction change input flag
-bool hiddenFlag = false; //easter egg
-int easterEgg; // easterFlag enables only when H key is hit 5 times
+bool hiddenFlag = false; //easter egg key H
 
 // initalze the program
 void myInit() {
@@ -25,7 +24,6 @@ void myInit() {
     initGrid(ROWS,COLUMNS);
     initGame();
     gameWelcome = true;
-	easterEgg = 5;
 }
 
 //timer function for animation fps
@@ -150,20 +148,14 @@ void myKeyboard(unsigned char key, int, int) {
 		//easterEgg flag enable if count 0 or easterEgg--;
 		case 'h':
 		case 'H':
-			if (easterEgg > 1)
-				easterEgg--;
-			else if (easterEgg == 1) {
-				easterEgg--;
-				hiddenFlag = true;
-			}
-			else hiddenFlag = !hiddenFlag;
+			hiddenFlag = !hiddenFlag;
 			break;
     }
 }
 
 //main()
 int main(int argc, char **argv) {
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(600, 600);

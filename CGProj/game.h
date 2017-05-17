@@ -31,7 +31,12 @@ const colors GREY = { 0.5,0.5,0.5 };
 const colors WHITE = { 1.0,1.0,1.0 };
 const colors RED = { 1.0,0.0,0.0 };
 const colors GREEN = { 0.0,1.0,0.0 };
+const colors DGREEN = { 0.0,0.8,0.0 };
 const colors BLUE = { 0.0,0.0,1.0 };
+const colors CYAN = { 0.0,1.0,1.0 };
+const colors MAGENTA = { 1.0,0.0,1.0 };
+const colors YELLOW = { 1.0,1.0,0.0 };
+const colors DORANGE = { 1.000,0.549,0.000 };
 
 //sharable functions
 void initGame();
@@ -41,7 +46,7 @@ void drawGrid();
 void drawSnake();
 void drawFood();
 void makeGameOver();
-void random(int&, int&);
+void random(int&, int&, int&);
 void renderWelcome();
 void renderGame();
 void renderPause();
