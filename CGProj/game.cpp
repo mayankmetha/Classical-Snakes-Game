@@ -87,7 +87,7 @@ void drawFood() {
     //food color
     switch(colorIndex) {
         case 0:
-            glColor3fv(BLUE);
+            glColor3fv(AQUAMARINE);
             break;
         case 1:
             glColor3fv(MAGENTA);
