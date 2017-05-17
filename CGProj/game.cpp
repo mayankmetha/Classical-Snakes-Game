@@ -160,7 +160,6 @@ void drawSnake() {
 				snake_length = MAX_LEN;
 			food = true;
 			score++;
-			printf("food,score=%d\n",score);
 		}
 	}
 }
@@ -232,7 +231,6 @@ void autoPlay() {
         if((posY[0] - 1) == posY[i] && posX[0] == posX[i] && sDir != UP)
             collidable |= down;
     }
-	printf("Dir=%d,posX=%d,posY=%d,Collision=%d\n", sDir,posX[0],posY[0],collidable);
     switch (collidable) {
         case 0: //no collision possible
             moveSnakeOnNoSelfCollision();
@@ -295,7 +293,6 @@ void autoPlay() {
                     turnLeft();
             }
             else if(sDir == RIGHT) {
-                printf("Trapped\n");
             }
             break;
         case 8: //collision on sDir = left
@@ -332,7 +329,6 @@ void autoPlay() {
                     turnRight();
             }
             else if(sDir == LEFT) {
-                printf("Trapped\n");
             }
             break;
         case 12: //collision on x-axis
@@ -349,7 +345,6 @@ void autoPlay() {
                     turnDown();
             }
             else if(sDir == UP) {
-                printf("Trapped\n");
             }
             break;
         case 14: //collision not possible on sDir = up
@@ -358,11 +353,9 @@ void autoPlay() {
                     turnUp();
             }
             else if(sDir == DOWN) {
-                printf("Trapped\n");
             }
             break;
         case 15: //collision avoidance not possible - ignore
-            printf("Cornered\n");
             break;
     }
 }
