@@ -5,4 +5,5 @@
 /CGProj/Debug/*
 /CGProj/Release/*
 /CGProj/x64/*
-/CGPRoj/logger*.txt
+/CGProj/logger*.txt
+/CGProj.xcodeproj/xcuserdata/*
