@@ -15,7 +15,8 @@ int colorIndex; // food color
 extern int score; //score
 char text[50]; //score string
 extern int fps; //animations frame rate
-extern bool hiddenFlag; //easter Egg flag
+extern bool testFlag; //testing flag
+extern bool gridFlag; //show hide grid flag
 
 //init game variables
 void initGame() {
@@ -29,6 +30,8 @@ void initGame() {
         posY[i] = 20 - i;
     }
     food = true;
+    testFlag = false;
+    gridFlag = true;
 }
 
 //initalize the grid
@@ -49,12 +52,14 @@ void drawCell(int x, int y, float thickness,const float* color) {
     glEnd();
 }
 
-//draw grid when easter egg flag is active
+//draw grid when grid flag is active
 void drawGrid() {
-    for (int x = 0; x < gridX; x++) {
-        for (int y = 0; y < gridY; y++) {
-            if (!gamePause && !gameOver && !(x == 0 || x == gridX - 1 || y == 0 || y == gridY - 1))
-                drawCell(x, y, 1.0, GREY);
+    if(gridFlag) {
+        for (int x = 0; x < gridX; x++) {
+            for (int y = 0; y < gridY; y++) {
+                if (!gamePause && !gameOver && !(x == 0 || x == gridX - 1 || y == 0 || y == gridY - 1))
+                    drawCell(x, y, 1.0, GREY);
+            }
         }
     }
 }
@@ -104,8 +109,8 @@ void drawFood() {
     }
     //draw food rectangle
     glRectd(foodX, foodY, foodX + 1, foodY + 1);
-    //easter egg
-    if (hiddenFlag)
+    //testing only
+    if (testFlag)
         autoPlay();
 }
 
@@ -181,11 +186,13 @@ void drawSnake() {
                 snake_length = MAX_LEN;
             food = true;
             score++;
+            if(score == 10)
+                gridFlag = false;
         }
     }
 }
 
-//Easter egg AI for snake without self collision avoidance
+//Testing AI for snake without self collision avoidance
 void moveSnakeOnNoSelfCollision() {
     int xdiff = foodX - posX[0]; //distance between snake and food on xaxis
     int ydiff = foodY - posY[0]; //distance between snake and food on yaxis
@@ -235,7 +242,7 @@ void moveSnakeOnNoSelfCollision() {
     }
 }
 
-//Easter egg AI for snake self collision avoidance
+//Testing AI for snake self collision avoidance
 void autoPlay() {
     unsigned int collidable = 0;
     const int up = 1;
@@ -413,8 +420,7 @@ void getScoreString() {
 
 //render game screen
 void renderGame() {
-    if(hiddenFlag)
-        drawGrid();
+    drawGrid();
     drawWall();
     drawFood();
     drawSnake();
@@ -422,14 +428,15 @@ void renderGame() {
 
 //render welcome screen
 void renderWelcome() {
-    drawStrings((char*)"CLASSICAL SNAKES", 0.03, 0.03, 30, 1200,1.5);
-    drawStrings((char*)"GRAPHICS PROJECT", 0.02, 0.02, 40, 1600,1.5);
-    drawStrings((char*)"PRESS S TO START GAME", 0.01, 0.01, 100, 2600,1.2);
-    drawStrings((char*)"PRESS P TO PAUSE GAME", 0.01, 0.01, 100, 2400,1.2);
-    drawStrings((char*)"PRESS Q TO QUIT GAME", 0.01, 0.01, 100, 2200,1.2);
-    drawStrings((char*)"USE ARROW KEYS OR W,S,A,D AS GAME CONTROLS", 0.01, 0.01, 100, 2000,1.2);
-    drawStrings((char*)"AUTHOR : MAYANK METHA D", 0.015, 0.015, 60, 800,1.5);
-    drawStrings((char*)"USN : 1MV14CS054", 0.015, 0.015, 60, 600,1.5);
+    drawStrings((char*)"CLASSICAL SNAKES", 0.03, 0.03, 30, 1200, 1.5);
+    drawStrings((char*)"GRAPHICS PROJECT", 0.02, 0.02, 40, 1600, 1.5);
+    drawStrings((char*)"PRESS S TO START GAME", 0.01, 0.01, 100, 2700, 1.2);
+    drawStrings((char*)"PRESS P TO PAUSE GAME", 0.01, 0.01, 100, 2500, 1.2);
+    drawStrings((char*)"PRESS Q TO QUIT GAME", 0.01, 0.01, 100, 2300, 1.2);
+    drawStrings((char*)"PRESS G TO TOGGLE GRID LINES", 0.01, 0.01, 100, 2100, 1.2);
+    drawStrings((char*)"USE ARROW KEYS OR W,S,A,D AS GAME CONTROLS", 0.01, 0.01, 100, 1900, 1.2);
+    drawStrings((char*)"AUTHOR : MAYANK METHA D", 0.015, 0.015, 60, 800, 1.5);
+    drawStrings((char*)"USN : 1MV14CS054", 0.015, 0.015, 60, 600, 1.5);
 }
 
 //render pause screen
@@ -437,7 +444,7 @@ void renderPause() {
     drawWall();
     drawFood();
     drawSnake();
-    drawStrings((char*)"GAME PAUSED", 0.03, 0.03, 190, 1100,1.5);
+    drawStrings((char*)"GAME PAUSED", 0.03, 0.03, 190, 1100, 1.5);
     drawStrings((char*)"PRESS P TO UNPAUSE", 0.015, 0.015, 300, 1600, 1.5);
     getScoreString();
 }
@@ -447,9 +454,9 @@ void renderExit() {
     drawWall();
     drawFood();
     drawSnake();
-    drawStrings((char*)"GAME OVER", 0.03, 0.03, 220, 1100,1.5);
-    drawStrings((char*)"PRESS Q TO QUIT", 0.015, 0.015, 300, 1600,1.5);
-    drawStrings((char*)"PRESS N TO RESTART", 0.015, 0.015, 300, 1400,1.5);
+    drawStrings((char*)"GAME OVER", 0.03, 0.03, 220, 1100, 1.5);
+    drawStrings((char*)"PRESS Q TO QUIT", 0.015, 0.015, 300, 1600, 1.5);
+    drawStrings((char*)"PRESS N TO RESTART", 0.015, 0.015, 300, 1400, 1.5);
     getScoreString();
 }
 

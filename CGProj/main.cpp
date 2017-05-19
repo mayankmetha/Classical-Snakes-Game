@@ -16,7 +16,8 @@ bool gameWelcome = false; //game before start flag
 int score; // score of game
 int fps; // frame rate of game
 bool sDirFlag = true; // snake direction change input flag
-bool hiddenFlag = false; //easter egg key H
+bool testFlag = false; //for testing the game
+bool gridFlag = true; //show hide grids
 
 // initalze the program
 void myInit() {
@@ -30,8 +31,8 @@ void myInit() {
 void myTimer(int) {
     glutPostRedisplay();
     //increase fps by one unit after score increaases by 5
-    if (score%5==0 && score!=0) {
-        fps = MIN_FPS + floor(score / 5);
+    if ((score % 2) == 0 && score != 0) {
+        fps = MIN_FPS + floor(score / 2);
         if (fps > FPS) fps = FPS;
     }
     glutTimerFunc(1000 / fps, myTimer, 0);
@@ -145,11 +146,16 @@ void myKeyboard(unsigned char key, int, int) {
 			if (!gameOver && !gamePause && !gameWelcome)
 				turnRight();
 			break;
-		//easterEgg flag enable if count 0 or easterEgg--;
-		case 'h':
-		case 'H':
-			hiddenFlag = !hiddenFlag;
+		//test mode activation
+		case 't':
+		case 'T':
+			testFlag = !testFlag;
 			break;
+        //show or hide grids
+        case 'g':
+        case 'G':
+            gridFlag = !gridFlag;
+            break;
     }
 }
 
