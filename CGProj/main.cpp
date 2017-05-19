@@ -63,10 +63,15 @@ void myDisplay() {
 
 //scaling & transform screen function
 void myReshape(int w, int h) {
-    glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+    if(w == h)
+        glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+    else if(w < h)
+        glViewport(0.0, (h - w)/2, (GLsizei)w, (GLsizei)w);
+    else
+        glViewport((w - h)/2, 0.0, (GLsizei)h, (GLsizei)h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-	glOrtho(0.0, COLUMNS, 0.0, ROWS, -1.0, 1.0);
+    glOrtho(0.0, COLUMNS, 0.0, ROWS, -1.0, 1.0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
