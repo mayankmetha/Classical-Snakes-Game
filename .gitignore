@@ -1,4 +1,4 @@
-﻿/.vs/*
+/.vs/*
 /x64/*
 /Debug/*
 /Release/*
@@ -7,3 +7,5 @@
 /CGProj/x64/*
 /CGProj/logger*.txt
 /CGProj.xcodeproj/xcuserdata/*
+/CGProj.xcodeproj/project.xcworkspace/xcuserdata/*
+
