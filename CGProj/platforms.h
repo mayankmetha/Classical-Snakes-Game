@@ -1,7 +1,6 @@
 #ifndef _PLATFORMS_H
 #define _PLATFORMS_H
 
-
 #ifdef __APPLE__
 //APPLE macOS 10.7 upwards
 #include <OpenGL/OpenGL.h>
