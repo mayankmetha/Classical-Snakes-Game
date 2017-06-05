@@ -429,7 +429,7 @@ void renderGame() {
 //render welcome screen
 void renderWelcome() {
     drawStrings((char*)"CLASSICAL SNAKES", 0.03, 0.03, 30, 1200, 1.5);
-    drawStrings((char*)"GRAPHICS PROJECT", 0.02, 0.02, 40, 1600, 1.5);
+    drawStrings((char*)"GRAPHICS MINI - PROJECT", 0.02, 0.02, 40, 1600, 1.5);
     drawStrings((char*)"PRESS S TO START GAME", 0.01, 0.01, 100, 2700, 1.2);
     drawStrings((char*)"PRESS P TO PAUSE GAME", 0.01, 0.01, 100, 2500, 1.2);
     drawStrings((char*)"PRESS Q TO QUIT GAME", 0.01, 0.01, 100, 2300, 1.2);
