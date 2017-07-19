@@ -19,4 +19,4 @@ Linux(Ubuntu/Debian):
 	Clone project
 	run "sh ubuntuDependicies.sh" to install freeglut3
 	run "make" to compile project
-	run "./snakes.exe" to execute project 
+	run "cd exe/linux && ./snakes_linux" to execute project 
